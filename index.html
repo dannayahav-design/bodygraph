@@ -4,8 +4,8 @@
 [hidden]{display:none !important}
   /* Layout: form on top, Type as the headline, then diagram beside the planets and gates (stacked on phones). */
   :root {
-    --bg: #fbf3f6; --surface: #ffffff; --fg: #2a1a22; --muted: #7a5d6b; --line: #ecd3de;
-    --accent: #b04374; --accent-fg: #ffffff; --brand: #d66e9a; --tint: #f8e1ea;
+    --bg: #ffffff; --surface: #ffffff; --fg: #2a1a22; --muted: #6f5a64; --line: #ecd9e2;
+    --accent: #b04374; --accent-fg: #ffffff; --brand: #d66e9a; --tint: #fdf2f6;
     --c-yellow: #e6cf4a; --c-green: #7db36a; --c-brown: #b08d62; --c-red: #e0685d;
     --ink-on-fill: #14161b;
     --design: #c43a30; --design-fg: #ffffff; --pers: #2a1a22; --pers-fg: #ffffff;
@@ -36,15 +36,16 @@
   h1 { font-family: var(--font-display); font-weight: 600; font-size: 24px; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
   .note { margin: 0; color: var(--muted); font-size: 13px; }
 
-  .form { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .form { display: flex; flex-wrap: wrap; gap: 14px 12px; align-items: flex-end; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
   .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 140px; }
   .field.place { flex: 2 1 240px; }
+  .formnote { flex: 1 1 100%; margin-top: -2px; }
   .alt { flex: 1 1 100%; color: var(--muted); font-size: 13px; }
   .alt summary { cursor: pointer; width: fit-content; }
   .alt .field { margin-top: 10px; max-width: 360px; }
   label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 500; }
-  input, select { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; min-width: 0; width: 100%; box-sizing: border-box; }
-  button { font: inherit; font-weight: 600; color: var(--accent-fg); background: var(--accent); border: 0; border-radius: 6px; padding: 9px 20px; cursor: pointer; }
+  input, select { height: 40px; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; min-width: 0; width: 100%; box-sizing: border-box; }
+  button { height: 40px; font: inherit; font-weight: 600; color: var(--accent-fg); background: var(--accent); border: 0; border-radius: 6px; padding: 9px 20px; cursor: pointer; }
   button:hover { filter: brightness(1.08); }
   input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .error { margin: 0; color: var(--design); font-weight: 500; }
@@ -130,6 +131,7 @@
 
   .gatesec { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
   .gatesec h2 { margin: 0; }
+  .gatesec > .note { margin-top: -6px; }
   .quad { display: grid; grid-template-columns: 1fr; gap: 16px; }
   @media (min-width: 1000px) { .quad { grid-template-columns: 1fr 1fr; } }
   .gcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
@@ -175,8 +177,9 @@
   <form id="form" class="form">
     <div class="field"><label for="bd-date">Birth date</label><input id="bd-date" type="date" required></div>
     <div class="field"><label for="bd-time">Birth time</label><input id="bd-time" type="time" required></div>
-    <div class="field place"><label for="bd-place">Place of birth</label><input id="bd-place" list="places" type="text" autocomplete="off" placeholder="Type your country or region"><datalist id="places"></datalist><p class="note" style="margin-top:6px">No need to enter a city. Just choose your country from the list (for larger countries, choose your region).</p></div>
+    <div class="field place"><label for="bd-place">Place of birth</label><input id="bd-place" list="places" type="text" autocomplete="off" placeholder="Type your country or region"><datalist id="places"></datalist></div>
     <button type="submit">Calculate</button>
+    <p class="note formnote">No need to enter a city. Just choose your country from the list (for larger countries, choose your region).</p>
     <details class="alt">
       <summary>Place of birth not listed?</summary>
       <div class="field"><label for="bd-tz">Choose a time zone instead</label><select id="bd-tz"></select></div>
